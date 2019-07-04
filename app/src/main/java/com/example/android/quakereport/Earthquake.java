@@ -8,19 +8,19 @@ public class Earthquake {
     // Location of the earthquake
     private String mEarthquakeLocation;
 
-    // Date of the earthquake
-    private String mEarthquakeDate;
+    // Time of the earthquake
+    private String mEarthquakeTime;
 
     /* Create a new Earthquake object
      * @param vMagnitude is the magnitude of the earthquake (e.g. 7.2)
      * @param vLocation is the location of the earthquake (e.g. patna)
      * @param vDate is the date of occurrence of the earthquake (e.g. 04/07/2019)
      **/
-    public Earthquake(String vMagnitude, String vLocation, String vDate){
+    public Earthquake(String vMagnitude, String vLocation, String vTime){
 
         mEarthquakeMagnitude = vMagnitude;
         mEarthquakeLocation = vLocation;
-        mEarthquakeDate = vDate;
+        mEarthquakeTime = vTime;
     }
 
     /*
@@ -43,7 +43,7 @@ public class Earthquake {
      * get the date of occurrence of the earthquake
      */
 
-    public String getEarthquakeDate(){
-        return mEarthquakeDate;
+    public String getEarthquakeTime(){
+        return mEarthquakeTime;
     }
 }

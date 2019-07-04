@@ -16,8 +16,6 @@ import java.util.ArrayList;
 
 public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
 
-    private static final String LOG_TAG = EarthquakeAdapter.class.getSimpleName();
-
     /**
      * This is our own custom constructor (it doesn't mirror a superclass constructor).
      * The context is used to inflate the layout file, and the list is the data we want
@@ -69,11 +67,11 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         // set this text on the location TextView
         locationTextView.setText(currentEarthquake.getEarthquakeLocation());
 
-        // Find the TextView in the list_item.xml layout with the earthquake_date
-        TextView dateTextView = (TextView) listItemView.findViewById(R.id.earthquake_date);
+        // Find the TextView in the list_item.xml layout with the earthquake_time
+        TextView timeTextView = (TextView) listItemView.findViewById(R.id.earthquake_time);
         // Get the date from the current Earthquake object and
         // set this text on the date TextView
-        dateTextView.setText(currentEarthquake.getEarthquakeDate());
+        timeTextView.setText(currentEarthquake.getEarthquakeTime());
 
         // Return the whole list item layout (containing 3 TextViews)
         // so that it can be shown in the ListView
