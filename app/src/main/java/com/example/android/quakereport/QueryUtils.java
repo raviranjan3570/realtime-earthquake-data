@@ -6,6 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -69,7 +70,8 @@ public final class QueryUtils {
                 double magnitude = properties.getDouble("mag");
                 String location = properties.getString("place");
                 Long quantum = properties.getLong("time");
-                Earthquake earthquake = new Earthquake(magnitude,location,quantum);
+                String url = properties.getString("url");
+                Earthquake earthquake = new Earthquake(magnitude, location, quantum, url);
                 earthquakes.add(earthquake);
             }
         }
