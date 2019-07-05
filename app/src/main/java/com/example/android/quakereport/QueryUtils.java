@@ -66,9 +66,9 @@ public final class QueryUtils {
                 // properties is JSON Object
                 JSONObject properties = JSONObject.getJSONObject("properties");
 
-                String magnitude = properties.getString("mag");
+                double magnitude = properties.getDouble("mag");
                 String location = properties.getString("place");
-                String quantum = properties.getString("time");
+                Long quantum = properties.getLong("time");
                 Earthquake earthquake = new Earthquake(magnitude,location,quantum);
                 earthquakes.add(earthquake);
             }
