@@ -24,6 +24,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -38,6 +39,11 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
      * TextView that is displayed when the list is empty
      */
     private TextView mEmptyStateTextView;
+
+    /**
+     * Progress bar that is displayed when the list is loading
+     */
+    private ProgressBar mGettingEarthquake;
 
     /**
      * Constant value for the earthquake loader ID. We can choose any integer.
@@ -119,6 +125,12 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
 
         // Set empty state text to display "No earthquakes found."
         mEmptyStateTextView.setText(R.string.no_earthquakes);
+
+        // map to progress bar
+        mGettingEarthquake = (ProgressBar) findViewById(R.id.loading_spinner);
+
+        // Set the progress bar when loading the data
+        mGettingEarthquake.setVisibility(View.GONE);
 
     }
 
