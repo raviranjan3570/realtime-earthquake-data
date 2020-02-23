@@ -18,4 +18,6 @@
     <string name="near_the">Near the</string>
     <!-- Text to display in the list when there are no earthquakes-->
     <string name="no_earthquakes">No earthquakes found.</string>
+    <!-- Text to display in the list when there is no internet connection-->
+    <string name="no_internet">No Internet Connection.</string>
 </resources>
