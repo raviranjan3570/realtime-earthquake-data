@@ -6,11 +6,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="?android:attr/listPreferredItemHeight"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
-    android:paddingEnd="16dp"
+    android:paddingStart="16dp"
     android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingStart="16dp">
+    android:paddingEnd="16dp"
+    android:paddingRight="16dp">
 
     <TextView
         android:id="@+id/magnitude"
@@ -18,7 +19,7 @@
         android:layout_height="36dp"
         android:layout_gravity="center_vertical"
         android:background="@drawable/magnitude_circle"
-        android:fontFamily="sans-serif-medium"
+        app:fontFamily="sans-serif-medium"
         android:gravity="center"
         android:textColor="@android:color/white"
         android:textSize="16sp"
@@ -28,8 +29,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_weight="1"
         android:orientation="vertical">
 
@@ -61,8 +62,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:orientation="vertical">
 
         <TextView

@@ -1,6 +1,6 @@
 package com.example.android.quakereport;
 
-public class Earthquake {
+class Earthquake {
 
     // Magnitude of the earthquake
     private double mEarthquakeMagnitude;
@@ -19,7 +19,7 @@ public class Earthquake {
      * @param vLocation is the location of the earthquake (e.g. patna)
      * @param vTime is the time of occurrence of the earthquake (e.g. 04/07/2019 at 9:00 am)
      **/
-    public Earthquake(double vMagnitude, String vLocation, Long vTime, String vUrl){
+    Earthquake(double vMagnitude, String vLocation, Long vTime, String vUrl) {
 
         mEarthquakeMagnitude = vMagnitude;
         mEarthquakeLocation = vLocation;
@@ -30,32 +30,28 @@ public class Earthquake {
     /*
      * get the magnitude of the earthquake
      */
-
-    public double getEarthquakeMagnitude(){
+    double getEarthquakeMagnitude() {
         return mEarthquakeMagnitude;
     }
 
     /*
      * get the location of the earthquake
      */
-
-    public String getEarthquakeLocation(){
+    String getEarthquakeLocation() {
         return mEarthquakeLocation;
     }
 
     /*
      * get the date of occurrence of the earthquake
      */
-
-    public Long getEarthquakeTime(){
+    Long getEarthquakeTime() {
         return mEarthquakeTime;
     }
 
     /*
      * get the date of occurrence of the earthquake
      */
-
-    public String getEarthquakeUrl(){
+    String getEarthquakeUrl() {
         return mEarthquakeUrl;
     }
 }
