@@ -20,4 +20,8 @@
     <string name="no_earthquakes">No earthquakes found.</string>
     <!-- Text to display in the list when there is no internet connection-->
     <string name="no_internet">No Internet Connection.</string>
+    <!-- Settings Menu Item [CHAR LIMIT=NONE] -->
+    <string name="settings_menu_item">Settings</string>
+    <!-- Settings Activity Title [CHAR LIMIT=NONE] -->
+    <string name="settings_title">Earthquake Settings</string>
 </resources>
