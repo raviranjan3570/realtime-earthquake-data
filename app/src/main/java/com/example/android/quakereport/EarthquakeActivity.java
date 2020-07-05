@@ -26,6 +26,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.customtabs.CustomTabsIntent;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -86,6 +87,11 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
      */
     private static EarthquakeAdapter mAdapter;
 
+    // Get a reference to the LoaderManager, in order to interact with loaders.
+    LoaderManager loaderManager = getLoaderManager();
+
+    private SwipeRefreshLayout swipeRefreshLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,6 +106,8 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
         // checks for network connectivity
         boolean isConnected = activeNetwork != null &&
                 activeNetwork.isConnected();
+
+        swipeRefreshLayout = findViewById(R.id.swipeToRefresh);
 
         // Get a reference to the ListView, and attach the adapter to the listView.
         ListView listView = findViewById(R.id.list);
@@ -134,15 +142,29 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
             }
         });
 
-        if (isConnected) {
+        /*
+         * Sets up a SwipeRefreshLayout.OnRefreshListener that is invoked when the user
+         * performs a swipe-to-refresh gesture.
+         */
+        swipeRefreshLayout.setOnRefreshListener(
+                new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
 
-            // Get a reference to the LoaderManager, in order to interact with loaders.
-            LoaderManager loaderManager = getLoaderManager();
+                        // This method performs the actual data-refresh operation.
+                        // The method calls setRefreshing(false) when it's finished.
+                        myUpdateOperation();
+                    }
+                }
+        );
+
+        if (isConnected) {
 
             // Initialize the loader. Pass in the int ID constant defined above and pass in null for
             // the bundle. Pass in this activity for the LoaderCallbacks parameter (which is valid
             // because this activity implements the LoaderCallbacks interface).
             loaderManager.initLoader(EARTHQUAKE_LOADER_ID, null, this);
+
         } else {
 
             // First, hide loading indicator so error message will be visible
@@ -184,6 +206,8 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
         // Clear the adapter of previous earthquake data
         mAdapter.clear();
 
+        swipeRefreshLayout.setRefreshing(false);
+
         // If there is a valid list of {@link Earthquake}s, then add them to the adapter's
         // data set. This will trigger the ListView to update.
         if (earthquakes != null && !earthquakes.isEmpty()) {
@@ -207,5 +231,10 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
         // Loader reset, so we can clear out our existing data.
         mAdapter.clear();
 
+    }
+
+    public void myUpdateOperation() {
+
+        loaderManager.restartLoader(EARTHQUAKE_LOADER_ID, null, this);
     }
 }
