@@ -1,6 +1,7 @@
 package com.example.android.quakereport;
 
 import android.app.Activity;
+import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
@@ -14,8 +15,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
-
-import android.graphics.drawable.GradientDrawable;
 
 /*
  * {@link EarthquakeAdapter} is an {@link ArrayAdapter} that can provide the layout for each list
@@ -51,7 +50,7 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
 
     @Override
     @NonNull
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
 
         // Check if the existing view is being reused, otherwise inflate the view
         View listItemView = convertView;
@@ -65,9 +64,10 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         Earthquake currentEarthquake = getItem(position);
 
         // Find the TextView in the list_item.xml layout with the ID earthquake_magnitude
-        TextView magnitudeTextView = (TextView) listItemView.findViewById(R.id.magnitude);
+        TextView magnitudeTextView = listItemView.findViewById(R.id.magnitude);
 
         // Format the magnitude to show 1 decimal place
+        assert currentEarthquake != null;
         String formattedMagnitude = formatMagnitude(currentEarthquake.getEarthquakeMagnitude());
 
         // Get the magnitude from the current Earthquake object and
@@ -92,20 +92,20 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         }
 
         // Find the TextView in the list_item.xml layout with the ID location_offset
-        TextView locationTextView = (TextView) listItemView.findViewById(R.id.location_offset);
+        TextView locationTextView = listItemView.findViewById(R.id.location_offset);
 
         // Get the location_offset from the current Earthquake object and
         // set this text on the location_offset TextView
         locationTextView.setText(locationOffset);
 
-        TextView distanceTextView = (TextView) listItemView.findViewById(R.id.primary_location);
+        TextView distanceTextView = listItemView.findViewById(R.id.primary_location);
         distanceTextView.setText(primaryLocation);
 
         // Create a new Date object from the time in milliseconds of the earthquake
         Date dateObject = new Date(currentEarthquake.getEarthquakeTime());
 
         // Find the TextView with view ID date
-        TextView dateView = (TextView) listItemView.findViewById(R.id.date);
+        TextView dateView = listItemView.findViewById(R.id.date);
 
         // Format the date string (i.e. "Mar 3, 1984")
         String formattedDate = formatDate(dateObject);
@@ -114,7 +114,7 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         dateView.setText(formattedDate);
 
         // Find the TextView with view ID time
-        TextView timeView = (TextView) listItemView.findViewById(R.id.time);
+        TextView timeView = listItemView.findViewById(R.id.time);
 
         // Format the time string (i.e. "4:30PM")
         String formattedTime = formatTime(dateObject);

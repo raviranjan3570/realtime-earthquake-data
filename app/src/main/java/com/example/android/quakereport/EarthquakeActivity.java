@@ -94,16 +94,18 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
         ConnectivityManager cm =
                 (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
 
+        assert cm != null;
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
 
         // checks for network connectivity
         boolean isConnected = activeNetwork != null &&
-                activeNetwork.isConnectedOrConnecting();
+                activeNetwork.isConnected();
 
         // Get a reference to the ListView, and attach the adapter to the listView.
-        ListView listView = (ListView) findViewById(R.id.list);
+        ListView listView = findViewById(R.id.list);
 
-        mEmptyStateTextView = (TextView) findViewById(R.id.empty_view);
+        mEmptyStateTextView = findViewById(R.id.empty_view);
+        assert listView != null;
         listView.setEmptyView(mEmptyStateTextView);
 
         // Create a new adapter that takes an empty list of earthquakes as input
@@ -122,6 +124,7 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
                 Earthquake currentEarthquake = mAdapter.getItem(position);
 
                 // Convert the String URL into a URI object (to pass into the Intent constructor)
+                assert currentEarthquake != null;
                 Uri earthquakeUri = Uri.parse(currentEarthquake.getEarthquakeUrl());
 
                 // chrome custom tabs
@@ -144,6 +147,7 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
 
             // First, hide loading indicator so error message will be visible
             View loadingIndicator = findViewById(R.id.loading_spinner);
+            assert loadingIndicator != null;
             loadingIndicator.setVisibility(View.GONE);
 
             mEmptyStateTextView.setText(R.string.no_internet);
@@ -187,9 +191,10 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
         }
 
         // map to progress bar
-        mGettingEarthquake = (ProgressBar) findViewById(R.id.loading_spinner);
+        mGettingEarthquake = findViewById(R.id.loading_spinner);
 
         // Set the progress bar when loading the data
+        assert mGettingEarthquake != null;
         mGettingEarthquake.setVisibility(View.GONE);
 
         // Set empty state text to display "No earthquakes found."

@@ -5,7 +5,7 @@
     tools:context="com.example.android.quakereport.EarthquakeActivity">
     <item
         android:id="@+id/action_settings"
-        android:icon="@drawable/ic_filter"
+        android:icon="@drawable/ic_baseline_settings_24"
         android:orderInCategory="1"
         android:title="@string/settings_menu_item"
         app:showAsAction="ifRoom" />
