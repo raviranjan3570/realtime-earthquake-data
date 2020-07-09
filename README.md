@@ -4,7 +4,13 @@ Quake Report App
 This app displays lists of earthquakes from usgs server.
 Used in a Udacity course in the Beginning Android Nanodegree.
 
+API used
+=====
+
+https://earthquake.usgs.gov/fdsnws/event/1/
+
 ## Screenshots
+
 <table>
 <tr>
 <td><img src="screenshots/Screenshot_2020-07-05-20-27-15-415_com.example.android.quakereport.jpg" style="width: 200px;"/></td>
