@@ -221,8 +221,21 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
         assert mGettingEarthquake != null;
         mGettingEarthquake.setVisibility(View.GONE);
 
-        // Set empty state text to display "No earthquakes found."
-        mEmptyStateTextView.setText(R.string.no_earthquakes);
+        ConnectivityManager cm =
+                (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        assert cm != null;
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+
+        // checks for network connectivity
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnected();
+        if (isConnected) {
+            // Set empty state text to display "No earthquakes found."
+            mEmptyStateTextView.setText(R.string.no_earthquakes);
+        } else {
+            mEmptyStateTextView.setText(R.string.no_internet);
+        }
     }
 
     @Override
